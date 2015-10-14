@@ -1,0 +1,18 @@
+Description=OpenWebHost Main Registration Server
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStartPre=-/usr/bin/docker pull openwebhost/openwebhost.ml
+ExecStartPre=-/usr/bin/docker kill openwebhost.ml
+ExecStartPre=-/usr/bin/docker rm openwebhost.ml
+ExecStart=/usr/bin/docker run \
+	-p 443:4443 \
+	-p 80:8888 \
+	-v /home/core/openwebhost.ml/certs:/opt/app/certs \
+	--name="openwebhost.ml" \
+	openwebhost/openwebhost.ml
+
+[Install]
+WantedBy=multi-user.target
