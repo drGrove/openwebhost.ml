@@ -2,9 +2,23 @@
 from flask import Flask, request, url_for, render_template
 from json import loads
 import os
+import MySQLdb
 
 with open('data.json', 'r') as datafile:
     settings = loads(datafile.read())
+
+mysqlenv = lambda name: os.getenv('MYSQL_ENV_MYSQL_' + name)
+
+env = {
+    "host": os.getenv('MYSQL_PORT_3306_TCP_ADDR'),
+    "user": mysqlenv('USER') or 'root',
+    "passwd": (mysqlenv('PASSWORD')
+        if mysqlenv('USER')
+        else mysqlenv('ROOT_PASSWORD')),
+    "db": mysqlenv('DATABASE')
+}
+connection = MySQLdb.connect(**env)
+cursor = connection.cursor()
 
 app = Flask(__name__)
 app.jinja_env.autoescape = False
