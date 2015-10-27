@@ -16,7 +16,7 @@ list running the [Debian](#Debian) servers.
 ```sh
 git clone https://github.com/OpenWebHost/openwebhost.ml
 cd openwebhost.ml
-sudo ./install.sh
+sudo systemctl enable openwebhost.service
 sudo systemctl daemon-reload
 sudo systemctl start openwebhost
 sudo systemctl start mysql
