@@ -28,11 +28,6 @@ def main():
     cursor.execute("SELECT * FROM posts ORDER BY id DESC LIMIT 5;")
     for item in cursor.fetchall():
         posts.append({"title": item[1], "content": item[2], "date": item[3]})
-    #files = [ f for f in os.listdir('blog') if f[0] != '.' ]
-    #files.sort()
-    #for blogpost in files[::-1]:
-    #    with open('blog/' + blogpost) as f:
-    #        posts.append(loads(f.read()))
     return render_template('index.html', settings=settings, posts=posts)
 
 if __name__ == "__main__":
