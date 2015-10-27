@@ -35,7 +35,8 @@ def main():
 if __name__ == "__main__":
     app.run(
         host="0.0.0.0",
-        port=4443,
-        ssl_context=('certs/openwebhost.ml.crt', 'certs/openwebhost.ml.key'),
+        port=8888,
+        #port=4443,
+        #ssl_context=('certs/openwebhost.ml.crt', 'certs/openwebhost.ml.key'),
         debug=True
     )

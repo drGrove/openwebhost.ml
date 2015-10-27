@@ -40,6 +40,12 @@
 				<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" id="signup">
 					  Sign Up
 				</button>
+				{% if settings.donate %}
+				<hr />
+				<a href="{{ settings.donate }}" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary">
+					Donate
+				</a>
+				{% endif %}
 			</div>
 			<main class="mdl-layout__content">
 				<div class="page-content">
