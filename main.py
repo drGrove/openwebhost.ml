@@ -25,6 +25,9 @@ app.jinja_env.autoescape = False
 @app.route('/')
 def main():
     posts = []
+    cursor.execute("SELECT * FROM posts ORDER BY id DESC LIMIT 5;")
+    for item in cursor.fetchall():
+        posts.append({"title": item[1], "content": item[2], "date": item[3]})
     #files = [ f for f in os.listdir('blog') if f[0] != '.' ]
     #files.sort()
     #for blogpost in files[::-1]:
